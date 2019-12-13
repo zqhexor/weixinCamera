@@ -1,0 +1,91 @@
+<!--index.wxml-->
+<view class="container">
+  <!--第一行标题-->
+  <view class="form-item">
+    <text class="page-title">访客预约申请</text>
+  </view>
+  <view class="main-area">
+    <!--类型选择-->
+    <view class="form-item">
+      <text class="form-item-name">访客类型：</text>
+      <radio-group class="form-item-right radio-group" bindchange="chooseTypeEvent">
+        <radio class="radio" value="0" checked="checked">
+          <text class="radio-text">人员</text>
+        </radio>
+        <radio class="radio radio-right" value="1">
+          <text class="radio-text">车辆</text>
+        </radio>
+      </radio-group>
+    </view>
+    <!--访客姓名-->
+    <view class="form-item">
+      <text class="form-item-name">访客姓名:</text>
+      <input class="form-item-right form-item-input" placeholder-class="form-item-input-placeholder"
+             placeholder="请输入访客姓名"/>
+    </view>
+    <!--联系电话-->
+    <view class="form-item">
+      <text class="form-item-name">联系电话:</text>
+      <input class="form-item-right form-item-input" placeholder-class="form-item-input-placeholder"
+             placeholder="请输入联系电话"/>
+    </view>
+    <!--单位名称-->
+    <view class="form-item">
+      <text class="form-item-name">单位名称:</text>
+      <input class="form-item-right form-item-input" placeholder-class="form-item-input-placeholder"
+             placeholder="请输入单位名称"/>
+    </view>
+    <!--访问日期-->
+    <view class="form-item">
+      <text class="form-item-name">访问日期:</text>
+      <picker mode="date" value="{{visitingDate}}" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
+        <view class="form-item-right form-item-input form-item-date-input">{{visitingDate}}</view>
+      </picker>
+
+    </view>
+    <!--访问时段-->
+    <view class="form-item">
+      <text class="form-item-name">访客时段:</text>
+      <picker class="time-pick form-item-left" mode="time" value="{{startTime}}" start="09:00" end="21:00"
+              bindchange="bindStartTimeChange">
+        <view class="form-item-time-pick">{{startTime}}</view>
+      </picker>
+      <text class="form-item-name">~</text>
+      <picker class="time-pick" mode="time" value="{{endTime}}" start="{{endTimeStart}}" end="21:00"
+              bindchange="bindEndTimeChange">
+        <view class="form-item-time-pick">{{endTime}}</view>
+      </picker>
+    </view>
+    <!--访问事由-->
+    <view class="form-item">
+      <text class="form-item-name">访问事由:</text>
+      <textarea class="form-item-textarea" maxlength="200" placeholder-class="form-item-textarea-placeholder"
+                placeholder="请输入访问事由"></textarea>
+    </view>
+    <!--访问照片-->
+    <view class="form-item form-after-textarea pic-form">
+      <text class="form-item-name">访问照片:</text>
+      <button class="common-yellow form-button-upload" bindtap="takePhotoEvent">拍照上传</button>
+      <image hidden="{{tempImagePath==''}}" src="{{tempImagePath}}" class='pic-area' mode="aspectFill" bindtap='imgPreview'></image>
+    </view>
+    <view>
+    </view>
+    <!--身份证号-->
+    <view class="form-item">
+      <text class="form-item-name">身份证号:</text>
+      <input class="form-item-right form-item-input-id {{personDisabled==true?'form-item-input-disable':''}}" disabled="{{personDisabled}}"
+             placeholder-class="form-item-input-placeholder" placeholder="请输入身份证号码"/>
+      <button class="common-yellow form-button-ident" bindtap="launchIdentEvent" disabled="{{personDisabled}}">识别</button>
+    </view>
+    <!--车牌号码-->
+    <view class="form-item">
+      <text class="form-item-name">车牌号码:</text>
+      <input class="form-item-right form-item-input {{carDisabled==true?'form-item-input-disable':''}}" disabled="{{carDisabled}}"
+             placeholder-class="form-item-input-placeholder" placeholder="请输入车牌号码"/>
+    </view>
+    <!--预约按钮-->
+    <view class="form-item">
+      <button class="common-yellow form-button-submit" bindtap="reserve">预 约</button>
+    </view>
+  </view>
+</view>

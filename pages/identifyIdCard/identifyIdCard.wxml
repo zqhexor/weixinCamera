@@ -1,0 +1,4 @@
+<camera class="window" mode="scanCode" device-position="back" flash="auto" binderror="error" bindscancode="takeCode">
+  <cover-image class="controls" src="../../image/id-card.png"></cover-image>
+  <cover-view class="noticeText">请将身份证正面(头像面)放置矩形框内识别</cover-view>
+</camera>

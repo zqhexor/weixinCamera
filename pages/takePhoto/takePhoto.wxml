@@ -1,0 +1,19 @@
+<view class="page-take-photo">
+  <view class="photo" wx:if="{{!camera}}">
+    <image class="photo-area" src="{{tempImagePath}}" bindtap="img">
+      <cover-view class="option-area">
+        <cover-view class="left-option" bindtap="open">重拍</cover-view>
+        <cover-view class="right-option" bindtap="usePhoto">使用照片</cover-view>
+      </cover-view>
+    </image>
+  </view>
+
+  <camera class="camera" device-position="{{device?'back':'front'}}" wx:if="{{camera}}" flash="off">
+    <cover-image class="avatar" src="../../image/avatar.png" ></cover-image>
+    <cover-view class="option-area">
+      <cover-view class="left-option" bindtap="close">取消</cover-view>
+      <cover-image class="camera-btn" src="../../image/camera-btn.png" bindtap="camera"></cover-image>
+      <cover-view class="right-option" bindtap="devicePosition">切换</cover-view>
+    </cover-view>
+  </camera>
+</view>
